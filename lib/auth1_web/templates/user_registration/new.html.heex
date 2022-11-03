@@ -1,0 +1,56 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browser</title>
+</head>
+
+<body>
+
+ <div class="splitl">
+  <div class="diagonal-boxu"></div>   
+   <div class="diagonal-boxd"></div>
+   <div class="con">
+     <button class="signup" style="background-color:white; border:0px; text-color:black;">Sign Up</button>
+   </div>
+   <div class="con2">Login</div>
+</div>
+  
+  <div class="splitr">
+    <div class="headingg">
+    <br>
+    <h2>Create new account</h2>
+    <h4>Already a member? <a href="#">Link</a></h4></div>
+  	
+    <div class="container">
+    	<.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
+        <%= if @changeset.action do %>
+          <div class="alert alert-danger">
+              <p>Oops, something went wrong! Please check the errors below.</p>
+          </div>
+        <% end %>
+        <%= label f, :name %>
+        <%= text_input f, :name, required: true , placeholder: "Name"%> <br>
+        <%= label f, :email %>
+        <%= email_input f, :email, required: true , placeholder: "Example@gmail.com"%> 
+        <%= error_tag f, :email %> <br>
+        <%= label f, :password %>
+        <%= password_input f, :password, required: true %>
+        <%= error_tag f, :password %><br>
+        <%= label f, :confirmpassword %>
+        <%= password_input f, :confirmpassword, required: true %>
+        <%= error_tag f, :password %><br>
+        <div>
+          <%= submit  "Create Account" %>
+        </div>
+    	</.form>
+    </div>
+  </div>
+
+<p>
+  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %> |
+  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+</p>
+
+</body>
+
+
